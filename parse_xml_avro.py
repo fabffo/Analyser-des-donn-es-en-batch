@@ -1,3 +1,5 @@
+# 2 paramètres: le nom du fichier historique  avec sa localisation sur HDFS /data-wiki..., le nom du fichier historique en sortie sur HDFS en avro /data-wiki....
+#spark-submit --master local[4] --driver-memory=6g --packages org.apache.spark:spark-avro_2.11:2.4.4 parser_sql.py hdfs://localhost:9000/data-wiki/raw/frwiki-20191220-pagesql.sql hdfs://localhost:9000/data-wiki/raw/frwiki-20191220-pagesql.avro
 # coding: utf-8
 import hdfs
 import fastavro

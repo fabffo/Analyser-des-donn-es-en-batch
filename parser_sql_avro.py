@@ -1,3 +1,5 @@
+# 2 paramètres: le nom du fichier sql en local, le nom du fichier sql en sortie sur HDFS en avro
+#spark-submit --master local[4] --driver-memory=6g --packages org.apache.spark:spark-avro_2.11:2.4.4 parser_sql.py hdfs://localhost:9000/data-wiki/raw/frwiki-20191220-pagesql.sql hdfs://localhost:9000/data-wiki/raw/frwiki-20191220-pagesql.avro
 # -*- coding: utf-8 -*-
 from pyspark import SparkContext
 from pyspark.sql import SparkSession, Row
@@ -29,7 +31,8 @@ def main(input, output):
         parsed_schema = df.schema
         print(parsed_schema)
 
-        df.write.format("avro").save("hdfs://localhost:9000/data-wiki/raw/frwiki-20191220-pagesql.avro")
+        #df.write.format("avro").save("hdfs://localhost:9000/data-wiki/raw/frwiki-20191220-pagesql.avro")
+        df.write.format("avro").save(output)
 
 
 if __name__ == "__main__":
